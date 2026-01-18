@@ -102,7 +102,7 @@ middlemanplate/
 
 ### 📦 Prerequisites
 
-- Ruby 3.2+ (tested with 3.4.x)
+- Ruby 3.2+ (tested with 4.0.0)
 - Bundler 2.4+
 - Node.js 20+
 - npm or yarn
