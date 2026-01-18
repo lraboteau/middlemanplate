@@ -1,0 +1,89 @@
+<footer class="bg-gray-50 dark:bg-dark-800 border-t border-gray-100 dark:border-gray-800">
+  <div class="container mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <!-- Brand Column -->
+      <div class="md:col-span-2">
+        <a href="/" class="flex items-center gap-3 mb-6">
+          <span class="font-heading font-bold text-xl text-gray-900 dark:text-white">
+            <%= site_config.title %>
+          </span>
+        </a>
+        <p class="text-gray-600 dark:text-gray-400 max-w-md mb-6">
+          <%= site_config.description %>
+        </p>
+        <!-- Social Links -->
+        <div class="flex items-center gap-4">
+          <% social_links.each do |social| %>
+            <a href="<%= social.url %>" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="p-2 text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-dark-700 rounded-lg transition-colors"
+               aria-label="<%= social.name %>">
+              <% case social.name.downcase %>
+              <% when 'twitter', 'x' %>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              <% when 'github' %>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <% when 'linkedin' %>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+              <% when 'facebook' %>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <% else %>
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm4.5 7.5h-2.25c-.41 0-.75.34-.75.75V10.5h3l-.45 3h-2.55V21h-3v-7.5H8.25v-3h2.25V7.5c0-2.07 1.68-3.75 3.75-3.75h2.25v3.75z"/></svg>
+              <% end %>
+            </a>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="font-heading font-bold text-gray-900 dark:text-white mb-6">Quick Links</h3>
+        <ul class="space-y-3">
+          <% menu_items.each do |item| %>
+            <li>
+              <a href="<%= item.url %>" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <%= item.name %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="font-heading font-bold text-gray-900 dark:text-white mb-6">Contact</h3>
+        <ul class="space-y-3 text-gray-600 dark:text-gray-400">
+          <% if site_config.email %>
+            <li>
+              <a href="mailto:<%= site_config.email %>" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <%= site_config.email %>
+              </a>
+            </li>
+          <% end %>
+          <% if site_config.phone %>
+            <li>
+              <a href="tel:<%= site_config.phone.gsub(/\s/, '') %>" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <%= site_config.phone %>
+              </a>
+            </li>
+          <% end %>
+          <% if site_config.address %>
+            <li><%= site_config.address %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-gray-600 dark:text-gray-400 text-sm">
+        &copy; <%= Time.now.year %> <%= site_config.title %>. All rights reserved.
+      </p>
+      <div class="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+        <a href="/privacy-policy/" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Privacy Policy</a>
+        <a href="/terms/" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

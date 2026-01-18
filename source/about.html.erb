@@ -1,0 +1,87 @@
+---
+title: About Us
+description: Learn more about our team and mission
+---
+
+<section class="section">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Page Header -->
+      <div class="text-center mb-16">
+        <h1 class="heading-1 text-gray-900 dark:text-white mb-6">About Us</h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          We're passionate about creating beautiful, functional websites that make a difference.
+        </p>
+      </div>
+      
+      <!-- Content -->
+      <div class="prose prose-lg dark:prose-dark max-w-none">
+        <p>
+          Welcome to Middlemanplate, a modern starter template built with Ruby Middleman and Tailwind CSS. 
+          Our goal is to provide developers with a solid foundation for building fast, beautiful static websites.
+        </p>
+        
+        <h2>Our Mission</h2>
+        <p>
+          We believe that building websites should be enjoyable and efficient. That's why we've created 
+          this template with all the essential features you need, so you can focus on what matters most: 
+          creating great content and delivering value to your users.
+        </p>
+        
+        <h2>Features</h2>
+        <ul>
+          <li><strong>Ruby Middleman</strong> - A powerful static site generator</li>
+          <li><strong>Tailwind CSS</strong> - Utility-first CSS framework</li>
+          <li><strong>Dark Mode</strong> - Built-in theme switching</li>
+          <li><strong>Blog</strong> - Full-featured blog with tags and categories</li>
+          <li><strong>SEO Optimized</strong> - Best practices for search engines</li>
+          <li><strong>Responsive Design</strong> - Looks great on all devices</li>
+        </ul>
+        
+        <h2>Get Started</h2>
+        <p>
+          Ready to build your next project? Check out our 
+          <a href="/blog/">blog</a> for tips and tutorials, or 
+          <a href="/contact/">contact us</a> if you have any questions.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="section bg-gray-50 dark:bg-dark-800">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="heading-2 text-gray-900 dark:text-white mb-4">Meet Our Team</h2>
+      <p class="text-gray-600 dark:text-gray-400">The people behind the project</p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <% team_members = [
+        { name: 'John Doe', role: 'Lead Developer', avatar: '/images/avatar.png' },
+        { name: 'Jane Smith', role: 'Designer', avatar: '/images/avatar.png' },
+        { name: 'Bob Wilson', role: 'Content Writer', avatar: '/images/avatar.png' }
+      ] %>
+      
+      <% team_members.each do |member| %>
+        <div class="card p-8 text-center card-hover">
+          <img src="<%= member[:avatar] %>" 
+               alt="<%= member[:name] %>" 
+               class="w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+          <h3 class="font-heading font-bold text-xl text-gray-900 dark:text-white mb-1">
+            <%= member[:name] %>
+          </h3>
+          <p class="text-gray-600 dark:text-gray-400"><%= member[:role] %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%= partial 'partials/call_to_action', locals: {
+  title: 'Want to Work Together?',
+  description: "We'd love to hear from you. Get in touch and let's create something amazing.",
+  button_text: 'Contact Us',
+  button_url: '/contact/'
+} %>

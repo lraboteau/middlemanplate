@@ -1,0 +1,3 @@
+web: bundle exec middleman server
+css: npm run watch:css
+js: npm run watch:js

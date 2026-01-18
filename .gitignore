@@ -1,29 +1,156 @@
-# build output
-dist/
-.output/
-.json/
+# Ruby
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
 
-# dependencies
+# Gemfile
+Gemfile.lock
+
+# RVM
+.rvmrc
+
+# rbenv
+.ruby-version
+.ruby-gemset
+
+# Bundler
+/.bundle/
+/vendor/bundle
+/lib/bundler/man/
+
+# YARD documentation
+/.yardoc/
+/_yardoc/
+/doc/
+/rdoc/
+
+# Gemfile.lock (uncomment if you want to ignore)
+# Gemfile.lock
+
+# Node.js
 node_modules/
-
-# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-yarn.lock
-package-lock.json
+.pnpm-debug.log*
+lerna-debug.log*
 
+# Dependency directories
+jspm_packages/
+bower_components/
 
-# environment variables
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Yarn
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Middleman
+/build/
+/.sass-cache/
+/source/.sass-cache/
+/.cache/
+
+# Middleman data
+/.tmp/
+
+# Environment variables
 .env
-.env.production
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
 
-# macOS-specific files
-.DS_Store
+# IDE and editors
+# VS Code
+.vscode/
+*.code-workspace
+.history/
 
-# ignore .astro directory
-.astro
-
-# ide
+# JetBrains IDEs (IntelliJ IDEA, RubyMine, WebStorm, etc.)
 .idea/
+*.iml
+*.ipr
+*.iws
+.idea_modules/
+out/
+
+# Other editors
+*.swp
+*.swo
+*~
+.project
+.settings/
+*.sublime-workspace
+*.sublime-project
+.atom/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Logs
+logs/
+*.log
+
+# Tailwind CSS
+.tailwindcss-cache/
+
+# Build artifacts
+dist/
+.output/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Debug
+*.pid
+*.seed
+*.pid.lock
+
+# Secrets
+*.pem
+*.key
+secrets.yml
+credentials.yml.enc
+master.key

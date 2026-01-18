@@ -1,0 +1,162 @@
+---
+title: Contact Us
+description: Get in touch with our team
+---
+
+<section class="section">
+  <div class="container mx-auto px-4">
+    <div class="max-w-5xl mx-auto">
+      <!-- Page Header -->
+      <div class="text-center mb-16">
+        <h1 class="heading-1 text-gray-900 dark:text-white mb-6">Get in Touch</h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          Have a question or want to work together? We'd love to hear from you.
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div class="card p-8">
+          <h2 class="heading-3 text-gray-900 dark:text-white mb-6">Send us a message</h2>
+          
+          <form action="https://formspree.io/f/your-form-id" method="POST" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="form-label">Name</label>
+                <input type="text" 
+                       id="name" 
+                       name="name" 
+                       required 
+                       class="form-input"
+                       placeholder="Your name">
+              </div>
+              <div>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" 
+                       id="email" 
+                       name="email" 
+                       required 
+                       class="form-input"
+                       placeholder="your@email.com">
+              </div>
+            </div>
+            
+            <div>
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" 
+                     id="subject" 
+                     name="subject" 
+                     required 
+                     class="form-input"
+                     placeholder="How can we help?">
+            </div>
+            
+            <div>
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" 
+                        name="message" 
+                        rows="5" 
+                        required 
+                        class="form-input resize-none"
+                        placeholder="Tell us about your project..."></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-full">
+              Send Message
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="space-y-8">
+          <div>
+            <h2 class="heading-3 text-gray-900 dark:text-white mb-6">Contact Information</h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-8">
+              Feel free to reach out through any of the following channels. 
+              We typically respond within 24 hours.
+            </p>
+          </div>
+          
+          <div class="space-y-6">
+            <% if site_config.email %>
+              <div class="flex items-start gap-4">
+                <div class="p-3 bg-primary-100 dark:bg-primary-900/30 rounded-xl">
+                  <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Email</h3>
+                  <a href="mailto:<%= site_config.email %>" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    <%= site_config.email %>
+                  </a>
+                </div>
+              </div>
+            <% end %>
+            
+            <% if site_config.phone %>
+              <div class="flex items-start gap-4">
+                <div class="p-3 bg-primary-100 dark:bg-primary-900/30 rounded-xl">
+                  <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Phone</h3>
+                  <a href="tel:<%= site_config.phone.gsub(/\s/, '') %>" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    <%= site_config.phone %>
+                  </a>
+                </div>
+              </div>
+            <% end %>
+            
+            <% if site_config.address %>
+              <div class="flex items-start gap-4">
+                <div class="p-3 bg-primary-100 dark:bg-primary-900/30 rounded-xl">
+                  <svg class="w-6 h-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Address</h3>
+                  <p class="text-gray-600 dark:text-gray-400">
+                    <%= site_config.address %>
+                  </p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          
+          <!-- Social Links -->
+          <div class="pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="font-semibold text-gray-900 dark:text-white mb-4">Follow Us</h3>
+            <div class="flex gap-3">
+              <% social_links.each do |social| %>
+                <a href="<%= social.url %>" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="p-3 bg-gray-100 dark:bg-dark-700 hover:bg-primary-100 dark:hover:bg-primary-900/30 text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 rounded-xl transition-colors"
+                   aria-label="<%= social.name %>">
+                  <% case social.name.downcase %>
+                  <% when 'twitter', 'x' %>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                  <% when 'github' %>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  <% when 'linkedin' %>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+                  <% else %>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0z"/></svg>
+                  <% end %>
+                </a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

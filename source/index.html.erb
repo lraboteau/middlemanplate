@@ -1,0 +1,83 @@
+---
+title: Home
+description: A modern Ruby Middleman starter with Tailwind CSS
+---
+
+<!-- Hero Section -->
+<%= partial 'partials/hero', locals: {
+  badge: '🚀 Built with Ruby Middleman',
+  title: 'Build Beautiful Static Sites with <span class="gradient-text">Ruby & Tailwind</span>',
+  description: 'A powerful, modern starter template featuring multi-authors, blog, dark mode, and everything you need to create stunning websites.',
+  image: '/images/banner.png',
+  primary_button: { text: 'Get Started', url: '/blog/' },
+  secondary_button: { text: 'Learn More', url: '/about/' }
+} %>
+
+<!-- Features Section -->
+<section class="section bg-white dark:bg-dark-900">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="heading-2 text-gray-900 dark:text-white mb-4">Everything You Need</h2>
+      <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Start building your next project with our feature-rich template
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% features = [
+        { icon: '🎨', title: 'Tailwind CSS', description: 'Utility-first CSS framework for rapid UI development' },
+        { icon: '🌙', title: 'Dark Mode', description: 'Built-in dark mode with smooth transitions' },
+        { icon: '📝', title: 'Blog Ready', description: 'Full-featured blog with tags, categories, and pagination' },
+        { icon: '⚡', title: 'Fast Builds', description: 'Lightning-fast builds with Middleman and esbuild' },
+        { icon: '📱', title: 'Responsive', description: 'Mobile-first design that looks great everywhere' },
+        { icon: '🔍', title: 'SEO Optimized', description: 'Built-in SEO best practices and meta tags' }
+      ] %>
+      
+      <% features.each_with_index do |feature, index| %>
+        <div class="card p-8 card-hover" data-animate style="animation-delay: <%= index * 100 %>ms;">
+          <span class="text-4xl mb-4 block"><%= feature[:icon] %></span>
+          <h3 class="heading-4 text-gray-900 dark:text-white mb-3"><%= feature[:title] %></h3>
+          <p class="text-gray-600 dark:text-gray-400"><%= feature[:description] %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Recent Posts Section -->
+<section class="section bg-gray-50 dark:bg-dark-800">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between mb-12">
+      <div>
+        <h2 class="heading-2 text-gray-900 dark:text-white mb-2">Latest Articles</h2>
+        <p class="text-gray-600 dark:text-gray-400">Fresh content from our blog</p>
+      </div>
+      <a href="/blog/" class="btn btn-secondary hidden md:inline-flex">
+        View All Posts
+        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% blog.articles.first(3).each do |article| %>
+        <%= partial 'partials/blog_card', locals: { article: article } %>
+      <% end %>
+    </div>
+    
+    <div class="text-center mt-8 md:hidden">
+      <a href="/blog/" class="btn btn-secondary">View All Posts</a>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<%= partial 'partials/call_to_action', locals: {
+  title: 'Ready to Start Building?',
+  description: 'Get started with Middlemanplate and create your next amazing project.',
+  button_text: 'Get Started Now',
+  button_url: '/contact/',
+  secondary_text: 'View Documentation',
+  secondary_url: 'https://middlemanapp.com/basics/install/'
+} %>

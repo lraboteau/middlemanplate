@@ -1,6 +1,37 @@
 [build]
-publish = "dist"
-command = "yarn build"
+  command = "npm install && npm run build:css && bundle install && bundle exec middleman build"
+  publish = "build"
 
 [build.environment]
-NODE_VERSION = "22.20.0"
+  RUBY_VERSION = "3.4.7"
+  NODE_VERSION = "20"
+
+# Redirects for clean URLs
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# Headers for security and caching
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer-when-downgrade"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, immutable"
+
+[[headers]]
+  for = "/stylesheets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/javascripts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

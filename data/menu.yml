@@ -1,0 +1,17 @@
+# Main Navigation Menu
+main:
+  - name: "Home"
+    url: "/"
+  - name: "About"
+    url: "/about/"
+  - name: "Blog"
+    url: "/blog/"
+  - name: "Contact"
+    url: "/contact/"
+
+# Footer Navigation (optional)
+footer:
+  - name: "Privacy Policy"
+    url: "/privacy-policy/"
+  - name: "Terms of Service"
+    url: "/terms/"

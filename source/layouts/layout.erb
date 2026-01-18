@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title><%= current_page.data.title ? "#{current_page.data.title} | #{site_config.title}" : site_config.title %></title>
+  <meta name="description" content="<%= current_page.data.description || site_config.description %>">
+  <meta name="author" content="<%= site_config.author %>">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="<%= current_page.data.title || site_config.title %>">
+  <meta property="og:description" content="<%= current_page.data.description || site_config.description %>">
+  <meta property="og:image" content="<%= site_config.base_url %>/images/og-image.png">
+  <meta property="og:url" content="<%= site_config.base_url %><%= current_page.url %>">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= current_page.data.title || site_config.title %>">
+  <meta name="twitter:description" content="<%= current_page.data.description || site_config.description %>">
+  <meta name="twitter:image" content="<%= site_config.base_url %>/images/og-image.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/images/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <%= stylesheet_link_tag 'main' %>
+  
+  <!-- Theme Script (prevents flash) -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+<body class="bg-white dark:bg-dark-900 text-gray-900 dark:text-gray-100 antialiased transition-colors duration-200">
+  <!-- Skip to main content -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-lg z-50">
+    Skip to main content
+  </a>
+
+  <%= partial 'partials/header' %>
+
+  <main id="main-content" class="min-h-screen">
+    <%= yield %>
+  </main>
+
+  <%= partial 'partials/footer' %>
+
+  <!-- Scripts -->
+  <%= javascript_include_tag 'site' %>
+</body>
+</html>

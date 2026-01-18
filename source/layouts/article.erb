@@ -1,0 +1,88 @@
+<% wrap_layout :layout do %>
+  <article class="py-16 lg:py-24">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <!-- Article Header -->
+      <header class="mb-12 text-center">
+        <% if current_article.tags.any? %>
+          <div class="flex flex-wrap justify-center gap-2 mb-4">
+            <% current_article.tags.each do |tag| %>
+              <%= link_to tag, tag_path(tag), class: 'inline-block px-3 py-1 text-sm font-medium text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900/50 transition-colors' %>
+            <% end %>
+          </div>
+        <% end %>
+        
+        <h1 class="text-4xl md:text-5xl font-heading font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+          <%= current_article.title %>
+        </h1>
+        
+        <div class="flex items-center justify-center gap-4 text-gray-600 dark:text-gray-400">
+          <% if current_article.data.author %>
+            <div class="flex items-center gap-2">
+              <img src="/images/avatar-sm.png" alt="<%= current_article.data.author %>" class="w-10 h-10 rounded-full">
+              <span class="font-medium"><%= current_article.data.author %></span>
+            </div>
+            <span class="text-gray-300 dark:text-gray-600">•</span>
+          <% end %>
+          <time datetime="<%= current_article.date.strftime('%Y-%m-%d') %>">
+            <%= format_date(current_article.date) %>
+          </time>
+          <span class="text-gray-300 dark:text-gray-600">•</span>
+          <span><%= reading_time(current_article.body) %></span>
+        </div>
+      </header>
+      
+      <!-- Featured Image -->
+      <% if current_article.data.image %>
+        <figure class="mb-12 -mx-4 md:mx-0">
+          <img src="<%= current_article.data.image %>" 
+               alt="<%= current_article.title %>" 
+               class="w-full rounded-xl shadow-lg">
+        </figure>
+      <% end %>
+      
+      <!-- Article Content -->
+      <div class="prose prose-lg dark:prose-dark max-w-none prose-headings:font-heading prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-img:rounded-xl prose-pre:bg-dark-900 dark:prose-pre:bg-dark-950">
+        <%= yield %>
+      </div>
+      
+      <!-- Article Footer -->
+      <footer class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <!-- Share buttons -->
+        <div class="flex items-center justify-between flex-wrap gap-4">
+          <div class="flex items-center gap-2">
+            <span class="text-gray-600 dark:text-gray-400 font-medium">Share:</span>
+            <a href="https://twitter.com/intent/tweet?url=<%= site_config.base_url %><%= current_page.url %>&text=<%= current_article.title %>" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="p-2 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
+               aria-label="Share on Twitter">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=<%= site_config.base_url %><%= current_page.url %>" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="p-2 text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
+               aria-label="Share on LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+            </a>
+          </div>
+          
+          <%= link_to '← Back to Blog', '/blog/', class: 'text-primary-600 dark:text-primary-400 hover:underline font-medium' %>
+        </div>
+      </footer>
+      
+      <!-- Related Articles -->
+      <% related = related_articles(current_article, 3) %>
+      <% if related.any? %>
+        <section class="mt-16">
+          <h2 class="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-8">Related Articles</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <% related.each do |article| %>
+              <%= partial 'partials/blog_card', locals: { article: article } %>
+            <% end %>
+          </div>
+        </section>
+      <% end %>
+    </div>
+  </article>
+<% end %>

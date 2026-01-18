@@ -1,0 +1,36 @@
+---
+title: Tag
+description: Articles tagged with this topic
+---
+
+<section class="section">
+  <div class="container mx-auto px-4">
+    <!-- Page Header -->
+    <div class="text-center mb-16">
+      <span class="badge badge-primary mb-4">Tag</span>
+      <h1 class="heading-1 text-gray-900 dark:text-white mb-4">
+        <%= tagname %>
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400">
+        <%= page_articles.size %> article<%= page_articles.size == 1 ? '' : 's' %> tagged with "<%= tagname %>"
+      </p>
+    </div>
+    
+    <!-- Articles Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% page_articles.each do |article| %>
+        <%= partial 'partials/blog_card', locals: { article: article } %>
+      <% end %>
+    </div>
+    
+    <!-- Back Link -->
+    <div class="text-center mt-12">
+      <a href="/blog/" class="btn btn-secondary">
+        <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Back to Blog
+      </a>
+    </div>
+  </div>
+</section>

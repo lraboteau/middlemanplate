@@ -1,0 +1,25 @@
+# Site Configuration
+title: "Middlemanplate"
+description: "A modern Ruby Middleman starter with Tailwind CSS, featuring multi-authors, blog, dark mode, and more."
+author: "Your Name"
+base_url: "https://middlemanplate.netlify.app"
+email: "hello@example.com"
+phone: "+1 234 567 890"
+address: "123 Main Street, City, Country"
+
+# SEO
+google_analytics_id: ""
+google_tag_manager_id: ""
+
+# Features
+features:
+  dark_mode: true
+  search: true
+  comments: false
+  newsletter: true
+
+# Comments (Disqus)
+disqus_shortname: ""
+
+# Pagination
+per_page: 10
